@@ -50,7 +50,7 @@ class FeedbackCounter extends Component {
           onBad={this.handleIncrementBad}
         />
         <h3 className={styles.StatTitle}>Statistics</h3>
-        <Values good={good12} neutral={neutral} bad={bad} />
+        <Values good={good} neutral={neutral} bad={bad} />
       </div>
     );
   }
