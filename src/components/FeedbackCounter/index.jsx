@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import styles from "./styles.module.css";
+import Buttons from "./Buttons";
+import Values from "./Values";
 
 class FeedbackCounter extends Component {
   static defaultProps = {
@@ -18,29 +20,37 @@ class FeedbackCounter extends Component {
     bad: this.props.initialBad,
   };
 
+  handleIncrementGood = (e) => {
+    this.setState((prevState) => ({
+      good: prevState.good + 1,
+    }));
+  };
+
+  handleIncrementNeutral = (e) => {
+    this.setState((prevState) => ({
+      neutral: prevState.neutral + 1,
+    }));
+  };
+
+  handleIncrementBad = (e) => {
+    this.setState((prevState) => ({
+      bad: prevState.bad + 1,
+    }));
+  };
+
   render() {
     const { good, bad, neutral } = this.state;
 
     return (
       <div className={styles.FeedbackCounter}>
         <h2 className={styles.FeedbackCounterTitle}>Please leave Feedback</h2>
-        <div className={styles.btns}>
-          <button className={styles.btn}>Good</button>
-          <button className={styles.btn}>Neutral</button>
-          <button className={styles.btn}>Bad</button>
-        </div>
+        <Buttons
+          onGood={this.handleIncrementGood}
+          onNeutral={this.handleIncrementNeutral}
+          onBad={this.handleIncrementBad}
+        />
         <h3 className={styles.StatTitle}>Statistics</h3>
-        <div className={styles.statWrapper}>
-          <p className={styles.stat}>
-            Good: <span className={styles.statValue}>{good}</span>
-          </p>
-          <p className={styles.stat}>
-            Neutral: <span className={styles.statValue}>{neutral}</span>
-          </p>
-          <p className={styles.stat}>
-            Bad: <span className={styles.statValue}>{bad}</span>
-          </p>
-        </div>
+        <Values good={good} neutral={neutral} bad={bad} />
       </div>
     );
   }
