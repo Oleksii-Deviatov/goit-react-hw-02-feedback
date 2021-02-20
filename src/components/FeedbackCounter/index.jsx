@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import styles from "./styles.module.css";
-import Buttons from "./Buttons";
-import Values from "./Values";
+import React, { Component } from 'react';
+import styles from './styles.module.css';
+import Buttons from './Buttons';
+import Values from './Values';
 
 class FeedbackCounter extends Component {
   static defaultProps = {
@@ -20,20 +20,20 @@ class FeedbackCounter extends Component {
     bad: this.props.initialBad,
   };
 
-  handleIncrementGood = (e) => {
-    this.setState((prevState) => ({
+  handleIncrementGood = e => {
+    this.setState(prevState => ({
       good: prevState.good + 1,
     }));
   };
 
-  handleIncrementNeutral = (e) => {
-    this.setState((prevState) => ({
+  handleIncrementNeutral = e => {
+    this.setState(prevState => ({
       neutral: prevState.neutral + 1,
     }));
   };
 
-  handleIncrementBad = (e) => {
-    this.setState((prevState) => ({
+  handleIncrementBad = e => {
+    this.setState(prevState => ({
       bad: prevState.bad + 1,
     }));
   };
@@ -50,7 +50,7 @@ class FeedbackCounter extends Component {
           onBad={this.handleIncrementBad}
         />
         <h3 className={styles.StatTitle}>Statistics</h3>
-        <Values good={good} neutral={neutral} bad={bad} />
+        <Values good={good123} neutral={neutral} bad={bad} />
       </div>
     );
   }
