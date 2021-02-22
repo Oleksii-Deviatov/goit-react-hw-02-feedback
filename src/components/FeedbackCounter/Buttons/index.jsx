@@ -1,14 +1,14 @@
-import styles from "./styles.module.css";
+import styles from './styles.module.css';
 
-const Buttons = ({ onGood, onNeutral, onBad }) => (
+const Buttons = ({ increment }) => (
   <div className={styles.btns}>
-    <button className={styles.btn} onClick={onGood}>
+    <button className={styles.btn} name="good" onClick={increment}>
       Good
     </button>
-    <button className={styles.btn} onClick={onNeutral}>
+    <button className={styles.btn} name="neutral" onClick={increment}>
       Neutral
     </button>
-    <button className={styles.btn} onClick={onBad}>
+    <button className={styles.btn} name="bad" onClick={increment}>
       Bad
     </button>
   </div>

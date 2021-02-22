@@ -20,21 +20,9 @@ class FeedbackCounter extends Component {
     bad: this.props.initialBad,
   };
 
-  handleIncrementGood = e => {
+  handleIncrement = ({ target: { name } }) => {
     this.setState(prevState => ({
-      good: prevState.good + 1,
-    }));
-  };
-
-  handleIncrementNeutral = e => {
-    this.setState(prevState => ({
-      neutral: prevState.neutral + 1,
-    }));
-  };
-
-  handleIncrementBad = e => {
-    this.setState(prevState => ({
-      bad: prevState.bad + 1,
+      [name]: prevState[name] + 1,
     }));
   };
 
@@ -44,11 +32,7 @@ class FeedbackCounter extends Component {
     return (
       <div className={styles.FeedbackCounter}>
         <h2 className={styles.FeedbackCounterTitle}>Please leave Feedback</h2>
-        <Buttons
-          onGood={this.handleIncrementGood}
-          onNeutral={this.handleIncrementNeutral}
-          onBad={this.handleIncrementBad}
-        />
+        <Buttons increment={this.handleIncrement} />
         <h3 className={styles.StatTitle}>Statistics</h3>
         <Values good={good} neutral={neutral} bad={bad} />
       </div>
