@@ -21,6 +21,7 @@ class FeedbackCounter extends Component {
   };
 
   handleIncrement = ({ target: { name } }) => {
+    console.log(typeof name);
     this.setState(prevState => ({
       [name]: prevState[name] + 1,
     }));
