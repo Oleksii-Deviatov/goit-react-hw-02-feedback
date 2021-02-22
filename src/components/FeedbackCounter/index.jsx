@@ -21,10 +21,21 @@ class FeedbackCounter extends Component {
   };
 
   handleIncrement = ({ target: { name } }) => {
-    console.log(typeof name);
     this.setState(prevState => ({
       [name]: prevState[name] + 1,
     }));
+  };
+
+  countTotalFeedback = () => {
+    const { good, neutral, bad } = this.state;
+    const total = good + neutral + bad;
+    return total;
+  };
+
+  countPositiveFeedbackPercentage = () => {
+    const { good } = this.state;
+    const total = this.countTotalFeedback();
+    return total ? Math.round((good / total) * 100) : 0;
   };
 
   render() {
@@ -35,7 +46,13 @@ class FeedbackCounter extends Component {
         <h2 className={styles.FeedbackCounterTitle}>Please leave Feedback</h2>
         <Buttons increment={this.handleIncrement} />
         <h3 className={styles.StatTitle}>Statistics</h3>
-        <Values good={good} neutral={neutral} bad={bad} />
+        <Values
+          good={good}
+          neutral={neutral}
+          bad={bad}
+          total={this.countTotalFeedback()}
+          percentage={this.countPositiveFeedbackPercentage()}
+        />
       </div>
     );
   }
