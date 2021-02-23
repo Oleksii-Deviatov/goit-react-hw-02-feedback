@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styles from './styles.module.css';
-import Buttons from './Buttons';
-import Values from './Values';
+import FeedbackOptions from '../FeedbackOptions';
+import Statistics from '../Statistics';
+import Section from '../Section';
 
 class FeedbackCounter extends Component {
   static defaultProps = {
@@ -11,7 +13,9 @@ class FeedbackCounter extends Component {
   };
 
   static propTypes = {
-    //
+    initialGood: PropTypes.number,
+    initialNeutral: PropTypes.number,
+    initialBad: PropTypes.number,
   };
 
   state = {
@@ -43,16 +47,19 @@ class FeedbackCounter extends Component {
 
     return (
       <div className={styles.FeedbackCounter}>
-        <h2 className={styles.FeedbackCounterTitle}>Please leave Feedback</h2>
-        <Buttons increment={this.handleIncrement} />
-        <h3 className={styles.StatTitle}>Statistics</h3>
-        <Values
-          good={good}
-          neutral={neutral}
-          bad={bad}
-          total={this.countTotalFeedback()}
-          percentage={this.countPositiveFeedbackPercentage()}
-        />
+        <Section title={'Please leave Feedback'}>
+          <FeedbackOptions onLeaveFeedback={this.handleIncrement} />
+        </Section>
+
+        <Section title={'Statistics'}>
+          <Statistics
+            good={good}
+            neutral={neutral}
+            bad={bad}
+            total={this.countTotalFeedback()}
+            positivePercentage={this.countPositiveFeedbackPercentage()}
+          />
+        </Section>
       </div>
     );
   }

@@ -1,6 +1,6 @@
 import styles from './styles.module.css';
 
-const Values = ({ good, neutral, bad, total, percentage = 0 }) => (
+const Values = ({ good, neutral, bad, total, positivePercentage }) => (
   <div className={styles.statWrapper}>
     <p className={styles.stat}>
       Good: <span className={styles.statValue}>{good}</span>
@@ -17,7 +17,7 @@ const Values = ({ good, neutral, bad, total, percentage = 0 }) => (
     </p>
     <p className={styles.stat}>
       Positive Feedback:
-      <span className={styles.statValue}>{percentage}</span>%
+      <span className={styles.statValue}>{positivePercentage}</span>%
     </p>
   </div>
 );
