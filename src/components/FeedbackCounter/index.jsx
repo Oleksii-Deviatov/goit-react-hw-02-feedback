@@ -25,8 +25,11 @@ function FeedbackCounter() {
   };
 
   const countTotalFeedback = () => {
-    const total = good + neutral + bad;
-    return total;
+    let count = 0;
+    for (let value of Object.values(state)) {
+      count += value;
+    }
+    return count;
   };
 
   const countPositiveFeedbackPercentage = () => {

@@ -12,7 +12,7 @@ const Values = ({ good, neutral, bad, total, positivePercentage }) => (
       Bad: <span className={styles.statValue}>{bad}</span>
     </p>
     <p className={styles.stat}>
-      total:
+      Total:
       <span className={styles.statValue}>{total}</span>
     </p>
     <p className={styles.stat}>
