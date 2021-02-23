@@ -4,13 +4,13 @@ import styles from './styles.module.css';
 
 const Container = ({ title, children }) => (
   <div className={styles.section}>
-    <h2 className={styles.title}>{title}</h2>
+    {title && <h2 className={styles.title}>{title}</h2>}
     <div className={styles.container}>{children}</div>
   </div>
 );
 
 Container.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
 };
 
 export default Container;

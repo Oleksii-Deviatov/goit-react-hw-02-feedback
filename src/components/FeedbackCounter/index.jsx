@@ -4,6 +4,7 @@ import styles from './styles.module.css';
 import FeedbackOptions from '../FeedbackOptions';
 import Statistics from '../Statistics';
 import Section from '../Section';
+import Notification from '../Notification';
 
 class FeedbackCounter extends Component {
   static defaultProps = {
@@ -58,15 +59,22 @@ class FeedbackCounter extends Component {
             options={keysForBtns}
           />
         </Section>
-        <Section title={'Statistics'}>
-          <Statistics
-            good={good}
-            neutral={neutral}
-            bad={bad}
-            total={total}
-            positivePercentage={positivePercentage}
-          />
-        </Section>
+
+        {total ? (
+          <Section title={'Statistics'}>
+            <Statistics
+              good={good}
+              neutral={neutral}
+              bad={bad}
+              total={total}
+              positivePercentage={positivePercentage}
+            />
+          </Section>
+        ) : (
+          <Section>
+            <Notification message="No feedback given"></Notification>
+          </Section>
+        )}
       </div>
     );
   }
