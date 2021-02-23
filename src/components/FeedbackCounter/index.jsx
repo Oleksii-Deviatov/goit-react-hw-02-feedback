@@ -43,21 +43,28 @@ class FeedbackCounter extends Component {
   };
 
   render() {
+    const total = this.countTotalFeedback();
+    const positivePercentage = this.countPositiveFeedbackPercentage();
+    const onLeaveFeedback = this.handleIncrement;
     const { good, bad, neutral } = this.state;
+
+    const keysForBtns = Object.keys(this.state);
 
     return (
       <div className={styles.FeedbackCounter}>
         <Section title={'Please leave Feedback'}>
-          <FeedbackOptions onLeaveFeedback={this.handleIncrement} />
+          <FeedbackOptions
+            onLeaveFeedback={onLeaveFeedback}
+            options={keysForBtns}
+          />
         </Section>
-
         <Section title={'Statistics'}>
           <Statistics
             good={good}
             neutral={neutral}
             bad={bad}
-            total={this.countTotalFeedback()}
-            positivePercentage={this.countPositiveFeedbackPercentage()}
+            total={total}
+            positivePercentage={positivePercentage}
           />
         </Section>
       </div>

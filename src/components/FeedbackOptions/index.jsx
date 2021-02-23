@@ -1,17 +1,25 @@
 import styles from './styles.module.css';
+import PropTypes from 'prop-types';
+import shortid from 'shortid';
 
-const Buttons = ({ onLeaveFeedback }) => (
-  <div className={styles.btns}>
-    <button className={styles.btn} name="good" onClick={onLeaveFeedback}>
-      Good
-    </button>
-    <button className={styles.btn} name="neutral" onClick={onLeaveFeedback}>
-      Neutral
-    </button>
-    <button className={styles.btn} name="bad" onClick={onLeaveFeedback}>
-      Bad
-    </button>
-  </div>
+const Buttons = ({ onLeaveFeedback, options }) => (
+  <>
+    {options.map(key => (
+      <button
+        key={shortid()}
+        className={styles.btn}
+        name={key}
+        onClick={onLeaveFeedback}
+      >
+        {key}
+      </button>
+    ))}
+  </>
 );
+
+Buttons.propTypes = {
+  options: PropTypes.array.isRequired,
+  onLeaveFeedback: PropTypes.func.isRequired,
+};
 
 export default Buttons;
