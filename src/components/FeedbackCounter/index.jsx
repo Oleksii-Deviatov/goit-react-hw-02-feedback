@@ -45,7 +45,7 @@ function FeedbackCounter() {
           options={keysForBtns}
         />
       </Section>
-      {countTotalFeedback ? (
+      {countTotalFeedback() ? (
         <Section title={'Statistics'}>
           <Statistics
             good={good}
