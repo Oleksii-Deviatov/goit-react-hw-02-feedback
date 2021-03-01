@@ -35,7 +35,7 @@ function App() {
   };
 
   return (
-    <div>
+    <>
       <Section title={'Please leave Feedback'}>
         <FeedbackOptions
           onLeaveFeedback={handleIncrement}
@@ -57,7 +57,7 @@ function App() {
           <Notification message="No feedback given"></Notification>
         </Section>
       )}
-    </div>
+    </>
   );
 }
 
