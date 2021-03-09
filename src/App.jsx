@@ -42,21 +42,15 @@ function App() {
           options={keysForBtns}
         />
       </Section>
-      {countTotalFeedback() ? (
-        <Section title={'Statistics'}>
-          <Statistics
-            good={good}
-            neutral={neutral}
-            bad={bad}
-            total={countTotalFeedback()}
-            positivePercentage={countPositiveFeedbackPercentage()}
-          />
-        </Section>
-      ) : (
-        <Section>
-          <Notification message="No feedback given"></Notification>
-        </Section>
-      )}
+      <Section title={'Statistics'}>
+        <Statistics
+          good={good}
+          neutral={neutral}
+          bad={bad}
+          total={countTotalFeedback()}
+          positivePercentage={countPositiveFeedbackPercentage()}
+        />
+      </Section>
     </>
   );
 }
